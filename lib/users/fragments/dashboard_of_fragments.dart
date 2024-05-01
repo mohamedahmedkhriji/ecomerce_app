@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:spacemarket_app/users/fragments/favorites_fragment_screen.dart';
+import 'package:spacemarket_app/users/fragments/home_fragment_screen.dart';
+import 'package:spacemarket_app/users/fragments/order_fragment_screen.dart';
 import 'package:spacemarket_app/users/fragments/profile_fragment_screen.dart';
-import '../userPreferences/currant_user.dart';
-import 'favorites_fragment_screen.dart';
-import 'home_fragment_screen.dart';
-import 'order_fragment_screen.dart';
+import 'package:spacemarket_app/users/userPreferences/currant_user.dart';
 
 class DashboardOfFragments extends StatelessWidget {
   CurrentUser _rememberCurrentUser = Get.put(CurrentUser());
@@ -51,7 +51,7 @@ class DashboardOfFragments extends StatelessWidget {
       },
       builder: (controller) {
         return Scaffold(
-          backgroundColor: Colors.pink[100],
+          backgroundColor: Colors.black,
           body: SafeArea(
             child: Obx(() => _fragmentScreens[_indexNumber.value]),
           ),
@@ -64,11 +64,11 @@ class DashboardOfFragments extends StatelessWidget {
               showSelectedLabels: true,
               showUnselectedLabels: true,
               selectedItemColor: Colors.white,
-              unselectedItemColor: Colors.black,
+              unselectedItemColor: Colors.white24,
               items: List.generate(4, (index) {
                 var navBtnProperty = _navigationButtonsProperties[index];
                 return BottomNavigationBarItem(
-                  backgroundColor: Colors.pink[300],
+                  backgroundColor: Colors.black,
                   icon: Icon(navBtnProperty["non_active_icon"]),
                   activeIcon: Icon(navBtnProperty["active_icon"]),
                   label: navBtnProperty["label"],

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:spacemarket_app/users/auth/signup_screen.dart';
 import 'package:http/http.dart' as http;
 
+import '../../admin/admin_login.dart';
 import '../../api_connection/api_connectio.dart';
 import '../fragments/dashboard_of_fragments.dart';
 import '../model/user.dart';
@@ -296,7 +297,9 @@ class _Login_ScreenState extends State<Login_Screen> {
                             children: [
                               const Text("Are you an Admin ? "),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.to(AdminLoginScreen());
+                                },
                                 child: Text(
                                   "Click Here",
                                   style: TextStyle(
