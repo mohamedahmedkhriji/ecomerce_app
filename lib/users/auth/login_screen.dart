@@ -62,7 +62,7 @@ class _Login_ScreenState extends State<Login_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.pink[50],
       body: LayoutBuilder(builder: (context, cons) {
         return ConstrainedBox(
           constraints: BoxConstraints(
@@ -74,9 +74,14 @@ class _Login_ScreenState extends State<Login_Screen> {
                 //login screen header
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: 285.0,
-                  child: Image.asset(
-                    "images/background.png",
+                  height: 250.0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(80),
+                    ),
+                    child: Image.asset(
+                      "images/bgstore.jpg",
+                    ),
                   ),
                 ),
 

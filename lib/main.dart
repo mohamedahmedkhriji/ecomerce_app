@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spacemarket_app/users/auth/login_screen.dart';
+import 'package:spacemarket_app/users/fragments/dashboard_of_fragments.dart';
+import 'package:spacemarket_app/users/userPreferences/user_preferences.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -19,10 +23,15 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
       ),
       home: FutureBuilder(
-        builder: (context, dataSnapshot) {
-          return Login_Screen();
+        // to save user login
+        future: RememberUserPrefs.readUserInfo(),
+        builder: (context, dataSnapShot) {
+          if (dataSnapShot.data == null) {
+            return Login_Screen();
+          } else {
+            return DashboardOfFragments();
+          }
         },
-        future: null,
       ),
     );
   }

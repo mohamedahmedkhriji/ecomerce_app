@@ -88,7 +88,7 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.pink[50],
       body: LayoutBuilder(builder: (context, cons) {
         return ConstrainedBox(
           constraints: BoxConstraints(
@@ -100,9 +100,14 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
                 //signup screen header
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: 285.0,
-                  child: Image.asset(
-                    "images/signup background.png",
+                  height: 280.0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(60),
+                    ),
+                    child: Image.asset(
+                      "images/signup background.png",
+                    ),
                   ),
                 ),
 
