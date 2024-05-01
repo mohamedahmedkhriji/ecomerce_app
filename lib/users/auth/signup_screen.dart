@@ -36,7 +36,7 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
 
         if (resBodyOfValidateEmail['emailFound'] == true) {
           Fluttertoast.showToast(
-              msg: "Email is already in someone else use. Try another email.");
+              msg: "Email is already use. Try with another email.");
         } else {
           //register & save new user record to database
           registerAndSaveUserRecord();
@@ -50,12 +50,12 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
 
   registerAndSaveUserRecord() async {
     User userModel = User(
-      1,
-      nameController.text.trim(),
+      1, //passing user id
+      nameController.text.trim(), //passing data to class user to user_name
       emailController.text.trim(),
       passwordController.text.trim(),
     );
-
+    //traduire data to json form
     try {
       var res = await http.post(
         Uri.parse(API.signup),

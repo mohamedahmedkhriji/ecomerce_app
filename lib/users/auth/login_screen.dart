@@ -1,6 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:spacemarket_app/users/auth/signup_screen.dart';
+import 'package:http/http.dart' as http;
+
+import '../../api_connection/api_connectio.dart';
+import '../fragments/dashboard_of_fragments.dart';
+import '../model/user.dart';
+import '../userPreferences/user_preferences.dart';
 
 class Login_Screen extends StatefulWidget {
   @override
@@ -8,10 +17,46 @@ class Login_Screen extends StatefulWidget {
 }
 
 class _Login_ScreenState extends State<Login_Screen> {
-  var formkey = GlobalKey<FormState>();
+  var formKey = GlobalKey<FormState>();
   var emailController = TextEditingController();
-  var passController = TextEditingController();
+  var passwordController = TextEditingController();
   var isObsecuire = true.obs;
+
+  loginUserNow() async {
+    try {
+      var res = await http.post(
+        Uri.parse(API.login),
+        body: {
+          "user_email": emailController.text.trim(),
+          "user_password": passwordController.text.trim(),
+        },
+      );
+
+      if (res.statusCode ==
+          200) //from flutter app the connection with api to server - success
+      {
+        var resBodyOfLogin = jsonDecode(res.body);
+        if (resBodyOfLogin['success'] == true) {
+          Fluttertoast.showToast(msg: "you are logged-in Successfully.");
+
+          User userInfo = User.fromJson(resBodyOfLogin["userData"]);
+
+          //save userInfo to local Storage using Shared Prefrences
+          await RememberUserPrefs.saveRememberUser(userInfo);
+
+          Future.delayed(Duration(milliseconds: 2000), () {
+            Get.to(DashboardOfFragments());
+          });
+        } else {
+          Fluttertoast.showToast(
+              msg:
+                  "Incorrect Credentials.\nPlease write correct password or email and Try Again.");
+        }
+      }
+    } catch (errorMsg) {
+      print("Error :: " + errorMsg.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +102,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                           //email,password,button
 
                           Form(
-                            key: formkey,
+                            key: formKey,
                             child: Column(
                               children:
 
@@ -114,7 +159,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                 Obx(
                                   //afficahe et masque passeword
                                   () => TextFormField(
-                                    controller: passController,
+                                    controller: passwordController,
                                     obscureText: isObsecuire.value,
                                     validator: (val) => val == ""
                                         ? "Plaise write passeword"
@@ -188,7 +233,11 @@ class _Login_ScreenState extends State<Login_Screen> {
                                   color: Colors.grey[700],
                                   borderRadius: BorderRadius.circular(30.0),
                                   child: InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      if (formKey.currentState!.validate()) {
+                                        loginUserNow();
+                                      }
+                                    },
                                     borderRadius: BorderRadius.circular(30.0),
                                     child: const Padding(
                                       padding: EdgeInsets.symmetric(

@@ -10,7 +10,14 @@ class User {
     this.user_email,
     this.user_password,
   );
+  factory User.fromJson(Map<String, dynamic> json) => User(
+        int.parse(json["user_id"]),
+        json["user_name"],
+        json["user_email"],
+        json["user_password"],
+      );
 
+  //traduire data from json to dart .
   Map<String, dynamic> toJson() => {
         'user_id': user_id.toString(),
         'user_name': user_name,
