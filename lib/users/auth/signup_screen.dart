@@ -1,6 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:spacemarket_app/users/auth/login_screen.dart';
+import 'package:http/http.dart' as http;
+import 'package:spacemarket_app/users/model/user.dart';
+import '../../api_connection/api_connectio.dart';
 
 class SignUp_Screen extends StatefulWidget {
   @override
@@ -11,8 +17,73 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
   var formkey = GlobalKey<FormState>();
   var nameController = TextEditingController();
   var emailController = TextEditingController();
-  var passController = TextEditingController();
+  var passwordController = TextEditingController();
   var isObsecuire = true.obs;
+
+  validateUserEmail() async {
+    try {
+      var res = await http.post(
+        Uri.parse(API.validationEmail),
+        body: {
+          'user_email': emailController.text.trim(),
+        },
+      );
+
+      if (res.statusCode ==
+          200) //from flutter app the connection with api to server - success
+      {
+        var resBodyOfValidateEmail = jsonDecode(res.body);
+
+        if (resBodyOfValidateEmail['emailFound'] == true) {
+          Fluttertoast.showToast(
+              msg: "Email is already in someone else use. Try another email.");
+        } else {
+          //register & save new user record to database
+          registerAndSaveUserRecord();
+        }
+      }
+    } catch (e) {
+      print(e.toString());
+      Fluttertoast.showToast(msg: e.toString());
+    }
+  }
+
+  registerAndSaveUserRecord() async {
+    User userModel = User(
+      1,
+      nameController.text.trim(),
+      emailController.text.trim(),
+      passwordController.text.trim(),
+    );
+
+    try {
+      var res = await http.post(
+        Uri.parse(API.signup),
+        body: userModel.toJson(),
+      );
+
+      if (res.statusCode ==
+          200) //from flutter app the connection with api to server - success
+      {
+        var resBodyOfSignUp = jsonDecode(res.body);
+        if (resBodyOfSignUp['success'] == true) {
+          Fluttertoast.showToast(
+              msg: "Congratulations, you are SignUp Successfully.");
+
+          setState(() {
+            nameController.clear();
+            emailController.clear();
+            passwordController.clear();
+          });
+        } else {
+          Fluttertoast.showToast(msg: "Error Occurred, Try Again.");
+        }
+      }
+    } catch (e) {
+      print(e.toString());
+      Fluttertoast.showToast(msg: e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +231,7 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
                                 Obx(
                                   //afficahe et masque passeword
                                   () => TextFormField(
-                                    controller: passController,
+                                    controller: passwordController,
                                     obscureText: isObsecuire.value,
                                     validator: (val) => val == ""
                                         ? "Plaise write passeword"
@@ -234,10 +305,16 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
                                   color: Colors.grey[700],
                                   borderRadius: BorderRadius.circular(30.0),
                                   child: InkWell(
-                                    onTap: () {},
                                     borderRadius: BorderRadius.circular(30.0),
-                                    child: const Padding(
-                                      padding: EdgeInsets.symmetric(
+                                    onTap: () {
+                                      if (formkey.currentState != null &&
+                                          formkey.currentState!.validate()) {
+                                        // Validate the email
+                                        validateUserEmail();
+                                      }
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
                                         vertical: 10.0,
                                         horizontal: 28.0,
                                       ),
@@ -250,7 +327,7 @@ class _SignUp_ScreenState extends State<SignUp_Screen> {
                                       ),
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
