@@ -45,6 +45,7 @@ class _Login_ScreenState extends State<Login_Screen> {
           await RememberUserPrefs.saveRememberUser(userInfo);
 
           Future.delayed(Duration(milliseconds: 2000), () {
+            //passage to dashbord take some segends
             Get.to(DashboardOfFragments());
           });
         } else {
@@ -234,6 +235,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                   borderRadius: BorderRadius.circular(30.0),
                                   child: InkWell(
                                     onTap: () {
+                                      //valider le forme de login
                                       if (formKey.currentState!.validate()) {
                                         loginUserNow();
                                       }
