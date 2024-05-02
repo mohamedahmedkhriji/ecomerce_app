@@ -301,7 +301,7 @@ class OrderNowScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        "\$" + totalAmount!.toStringAsFixed(2),
+                        "\DT" + totalAmount!.toStringAsFixed(2),
                         style: const TextStyle(
                           color: Colors.white70,
                           fontSize: 20,
