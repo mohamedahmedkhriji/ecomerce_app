@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:spacemarket_app/users/auth/login_screen.dart';
+import 'package:spacemarket_app/users/authentication/login_screen.dart';
 import 'package:spacemarket_app/users/fragments/dashboard_of_fragments.dart';
 import 'package:spacemarket_app/users/userPreferences/user_preferences.dart';
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         future: RememberUserPrefs.readUserInfo(),
         builder: (context, dataSnapShot) {
           if (dataSnapShot.data == null) {
-            return Login_Screen();
+            return LoginScreen();
           } else {
             return DashboardOfFragments();
           }
