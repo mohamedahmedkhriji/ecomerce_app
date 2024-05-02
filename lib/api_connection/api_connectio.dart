@@ -2,6 +2,7 @@ class API {
   static const hostConnect = "http://192.168.100.90/api_space_market";
   static const hostConnectUser = "$hostConnect/user";
   static const hostConnectAdmin = "$hostConnect/admin";
+  static const hostUploadItem = "$hostConnect/items";
 
   //singUp user
   static const validationEmail = "$hostConnectUser/validate_email.php";
@@ -9,4 +10,6 @@ class API {
   static const login = "$hostConnectUser/login.php";
   //login admin
   static const adminLogin = "$hostConnectAdmin/login.php";
+  //upload-save new item
+  static const uploadNewItem = "$hostUploadItem/upload.php";
 }
