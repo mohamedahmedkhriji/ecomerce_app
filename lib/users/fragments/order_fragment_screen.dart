@@ -53,52 +53,57 @@ class OrderFragmentScreen extends StatelessWidget {
           //myOrder title     //history title
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 24, 8, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //order icon image
-                // my orders
-                Column(
-                  children: [
-                    const Text(
-                      "My Orders",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+            child: Container(
+              color: Colors.orange,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  //order icon image
+                  // my orders
+                  Column(
+                    children: [
+                      const Text(
+                        "My Orders",
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Logofont',
+                          color: Colors.white,
+                          letterSpacing: 3.0,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  //history icon image
+                  // history
+                  GestureDetector(
+                    onTap: () {
+                      //send user to orders history screen
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.timer_outlined,
+                            size: 30,
+                            color: Colors.white,
+                          ),
+                          const Text(
+                            "History",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-
-                //history icon image
-                // history
-                GestureDetector(
-                  onTap: () {
-                    //send user to orders history screen
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Icon(
-                          Icons.timer_outlined,
-                          size: 30,
-                          color: Colors.green,
-                        ),
-                        const Text(
-                          "History",
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           SizedBox(height: 80),
@@ -108,9 +113,10 @@ class OrderFragmentScreen extends StatelessWidget {
             child: Text(
               "Here are your successfully placed orders.",
               style: TextStyle(
-                fontSize: 16,
+                fontFamily: 'Payement',
+                fontSize: 20,
                 color: Colors.green,
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

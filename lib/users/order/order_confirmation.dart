@@ -242,8 +242,9 @@ class OrderConfirmationScreen extends StatelessWidget {
                       child: Text(
                         "Confirmed & Proceed",
                         style: TextStyle(
+                          fontFamily: 'Payement',
                           color: Colors.white,
-                          fontSize: 16,
+                          fontSize: 20,
                         ),
                       ),
                     ),

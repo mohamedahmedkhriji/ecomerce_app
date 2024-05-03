@@ -67,12 +67,41 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
               child: Column(
                 children: [
                   //login screen header
-                  SizedBox(
+                  Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 285,
-                    child: Image.asset(
-                      "images/adminbg.jpg",
+                    height: 200,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(
+                            30), // Rounded corners for bottom left
+                        bottomRight: Radius.circular(
+                            30), // Rounded corners for bottom right
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.5), // Shadow color
+                          spreadRadius: 5, // Spread radius
+                          blurRadius: 7, // Blur radius
+                          offset: Offset(0, 3), // Shadow offset
+                        ),
+                      ],
                     ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(
+                            30), // Rounded corners for bottom left
+                        bottomRight: Radius.circular(
+                            30), // Rounded corners for bottom right
+                      ),
+                      child: Image.asset(
+                        "images/adminbg.jpg",
+                        fit: BoxFit
+                            .cover, // Ensure the image covers the entire container
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25,
                   ),
 
                   //login screen sign-in form
@@ -80,15 +109,15 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
                     padding: const EdgeInsets.all(16.0),
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: Colors.white24,
+                        color: Colors.deepPurpleAccent,
                         borderRadius: BorderRadius.all(
                           Radius.circular(60),
                         ),
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 8,
-                            color: Colors.black26,
-                            offset: Offset(0, -3),
+                            color: Colors.black,
+                            offset: Offset(2, -5),
                           ),
                         ],
                       ),
@@ -223,7 +252,7 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
 
                                   //button
                                   Material(
-                                    color: Colors.black,
+                                    color: Colors.purple.shade700,
                                     borderRadius: BorderRadius.circular(30),
                                     child: InkWell(
                                       onTap: () {
@@ -234,14 +263,15 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
                                       borderRadius: BorderRadius.circular(30),
                                       child: const Padding(
                                         padding: EdgeInsets.symmetric(
-                                          vertical: 10,
-                                          horizontal: 28,
+                                          vertical: 15,
+                                          horizontal: 40,
                                         ),
                                         child: Text(
                                           "Login",
                                           style: TextStyle(
+                                            fontFamily: 'Dach',
                                             color: Colors.white,
-                                            fontSize: 16,
+                                            fontSize: 20,
                                           ),
                                         ),
                                       ),
@@ -259,7 +289,13 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text("I am not an Admin?"),
+                                const Text(
+                                  "I am not an Admin?",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                  ),
+                                ),
                                 TextButton(
                                   onPressed: () {
                                     Get.to(LoginScreen());

@@ -10,16 +10,17 @@ class ProfileFragmentScreen extends StatelessWidget {
   signOutUser() async {
     var resultResponse = await Get.dialog(
       AlertDialog(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.grey.shade300,
         title: const Text(
           "Logout",
           style: TextStyle(
-            fontSize: 18,
+            fontFamily: 'Yes',
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),
         content: const Text(
-          "Are you sure?\nyou want to logout from app?",
+          "Are you sure?",
         ),
         actions: [
           TextButton(
@@ -29,7 +30,9 @@ class ProfileFragmentScreen extends StatelessWidget {
               child: const Text(
                 "No",
                 style: TextStyle(
-                  color: Colors.black,
+                  fontFamily: 'Yes',
+                  fontSize: 20,
+                  color: Colors.red,
                 ),
               )),
           TextButton(
@@ -39,7 +42,9 @@ class ProfileFragmentScreen extends StatelessWidget {
               child: const Text(
                 "Yes",
                 style: TextStyle(
-                  color: Colors.black,
+                  fontFamily: 'Yes',
+                  fontSize: 20,
+                  color: Colors.green,
                 ),
               )),
         ],
@@ -54,36 +59,48 @@ class ProfileFragmentScreen extends StatelessWidget {
     }
   }
 
-  Widget userInfoItemProfile(IconData iconData, String userData) {
+  Widget userInfoItemProfile(
+      IconData iconData, String userData, Color textColor) {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.grey[50],
-      ),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 8,
-      ),
-      child: Row(
-        children: [
-          Icon(
-            iconData,
-            size: 30,
-            color: Colors.black,
-          ),
-          const SizedBox(
-            width: 16,
-          ),
-          Text(
-            userData,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 15,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black38,
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
             ),
+          ],
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: Colors.grey.shade300,
           ),
-        ],
-      ),
-    );
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+          child: Row(
+            children: [
+              Icon(
+                iconData,
+                size: 30,
+                color: Colors.black,
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              Text(
+                userData,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 
   @override
@@ -92,19 +109,34 @@ class ProfileFragmentScreen extends StatelessWidget {
       padding: const EdgeInsets.all(32),
       children: [
         Center(
-          child: CircleAvatar(
-            radius: 120, // half of the width
-            backgroundImage: AssetImage("images/man.png"),
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.green,
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: CircleAvatar(
+              radius: 120, // half of the width
+              backgroundImage: AssetImage("images/man.png"),
+            ),
           ),
         ),
         const SizedBox(
-          height: 20,
+          height: 50,
         ),
-        userInfoItemProfile(Icons.person, _currentUser.user.user_name),
+        userInfoItemProfile(
+            Icons.person, _currentUser.user.user_name, Colors.black),
         const SizedBox(
           height: 20,
         ),
-        userInfoItemProfile(Icons.email, _currentUser.user.user_email),
+        userInfoItemProfile(
+            Icons.email, _currentUser.user.user_email, Colors.black),
         const SizedBox(
           height: 20,
         ),
@@ -125,8 +157,10 @@ class ProfileFragmentScreen extends StatelessWidget {
                 child: Text(
                   "Sign Out",
                   style: TextStyle(
+                    fontFamily: 'Dach',
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),

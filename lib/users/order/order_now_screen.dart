@@ -32,10 +32,15 @@ class OrderNowScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.green,
         title: const Text(
           "Order Now",
-          style: TextStyle(color: Colors.white, fontSize: 30),
+          style: TextStyle(
+            fontSize: 35,
+            color: Colors.white,
+            fontFamily: 'Logofont',
+            letterSpacing: 3.0,
+          ),
         ),
         titleSpacing: 0,
       ),
@@ -52,7 +57,8 @@ class OrderNowScreen extends StatelessWidget {
             child: Text(
               'Delivery System:',
               style: TextStyle(
-                fontSize: 18,
+                fontFamily: 'Payement',
+                fontSize: 20,
                 color: Colors.green,
                 fontWeight: FontWeight.bold,
               ),
@@ -68,8 +74,11 @@ class OrderNowScreen extends StatelessWidget {
                       activeColor: Colors.green,
                       title: Text(
                         deliverySystemName,
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.black),
+                        style: const TextStyle(
+                            fontFamily: 'Payement',
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                       ),
                       value: deliverySystemName,
                       groupValue: orderNowController.deliverySys,
@@ -93,7 +102,8 @@ class OrderNowScreen extends StatelessWidget {
                 Text(
                   'Payment System:',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontFamily: 'Payement',
+                    fontSize: 20,
                     color: Colors.green,
                     fontWeight: FontWeight.bold,
                   ),
@@ -102,7 +112,8 @@ class OrderNowScreen extends StatelessWidget {
                 Text(
                   'Company Account Number / ID: \nY87Y-HJF9-CVBN-4321',
                   style: TextStyle(
-                    fontSize: 14,
+                    fontFamily: 'Payement',
+                    fontSize: 18,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
@@ -120,8 +131,11 @@ class OrderNowScreen extends StatelessWidget {
                       activeColor: Colors.green,
                       title: Text(
                         paymentSystemName,
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.black),
+                        style: const TextStyle(
+                            fontFamily: 'Payement',
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                       ),
                       value: paymentSystemName,
                       groupValue: orderNowController.paymentSys,
@@ -142,7 +156,8 @@ class OrderNowScreen extends StatelessWidget {
             child: Text(
               'Phone Number:',
               style: TextStyle(
-                fontSize: 18,
+                fontFamily: 'Payement',
+                fontSize: 20,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
@@ -156,6 +171,7 @@ class OrderNowScreen extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: 'any Contact Number..',
                 hintStyle: const TextStyle(
+                  fontFamily: 'Payement',
                   color: Colors.black,
                 ),
                 border: OutlineInputBorder(
@@ -187,7 +203,8 @@ class OrderNowScreen extends StatelessWidget {
             child: Text(
               'Shipment Address:',
               style: TextStyle(
-                fontSize: 18,
+                fontFamily: 'Payement',
+                fontSize: 20,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
@@ -201,6 +218,7 @@ class OrderNowScreen extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: 'your Shipment Address..',
                 hintStyle: const TextStyle(
+                  fontFamily: 'Payement',
                   color: Colors.black,
                 ),
                 border: OutlineInputBorder(
@@ -232,7 +250,8 @@ class OrderNowScreen extends StatelessWidget {
             child: Text(
               'Note to Seller:',
               style: TextStyle(
-                fontSize: 18,
+                fontFamily: 'Payement',
+                fontSize: 20,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
@@ -246,6 +265,7 @@ class OrderNowScreen extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: 'Any note you want to write to seller..',
                 hintStyle: const TextStyle(
+                  fontFamily: 'Payement',
                   color: Colors.black,
                 ),
                 border: OutlineInputBorder(
@@ -306,6 +326,7 @@ class OrderNowScreen extends StatelessWidget {
                       Text(
                         "\DT" + totalAmount!.toStringAsFixed(2),
                         style: const TextStyle(
+                          fontFamily: 'Payement',
                           color: Colors.white70,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -315,8 +336,9 @@ class OrderNowScreen extends StatelessWidget {
                       const Text(
                         "Pay Amount Now",
                         style: TextStyle(
+                          fontFamily: 'Payement',
                           color: Colors.white,
-                          fontSize: 16,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -348,7 +370,7 @@ class OrderNowScreen extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.white24,
+            color: Colors.green.shade300,
             boxShadow: const [
               BoxShadow(
                 offset: Offset(0, 0),
@@ -398,7 +420,8 @@ class OrderNowScreen extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
-                          fontSize: 18,
+                          fontFamily: 'Payement',
+                          fontSize: 24,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
@@ -418,6 +441,8 @@ class OrderNowScreen extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
+                          fontFamily: 'Payement',
+                          fontSize: 18,
                           color: Colors.black,
                         ),
                       ),
@@ -429,7 +454,8 @@ class OrderNowScreen extends StatelessWidget {
                         "\DT" + eachSelectedItem["totalAmount"].toString(),
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
-                          fontSize: 18,
+                          fontFamily: 'Payement',
+                          fontSize: 20,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
@@ -443,7 +469,7 @@ class OrderNowScreen extends StatelessWidget {
                             eachSelectedItem["totalAmount"].toString(),
                         style: const TextStyle(
                           color: Colors.black,
-                          fontSize: 12,
+                          fontSize: 18,
                         ),
                       ),
                     ],
@@ -457,6 +483,7 @@ class OrderNowScreen extends StatelessWidget {
                 child: Text(
                   "Q: " + eachSelectedItem["quantity"].toString(),
                   style: const TextStyle(
+                    fontFamily: 'Payement',
                     fontSize: 24,
                     color: Colors.black,
                   ),

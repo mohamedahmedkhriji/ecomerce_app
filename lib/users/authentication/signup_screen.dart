@@ -92,7 +92,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.blue[200],
       body: LayoutBuilder(
         builder: (context, cons) {
           return ConstrainedBox(
@@ -103,12 +103,41 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Column(
                 children: [
                   //signup screen header
-                  SizedBox(
+                  Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 285,
-                    child: Image.asset(
-                      "images/signup background.png",
+                    height: 250,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(
+                            30), // Rounded corners for bottom left
+                        bottomRight: Radius.circular(
+                            30), // Rounded corners for bottom right
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.5), // Shadow color
+                          spreadRadius: 5, // Spread radius
+                          blurRadius: 7, // Blur radius
+                          offset: Offset(0, 3), // Shadow offset
+                        ),
+                      ],
                     ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(
+                            30), // Rounded corners for bottom left
+                        bottomRight: Radius.circular(
+                            30), // Rounded corners for bottom right
+                      ),
+                      child: Image.asset(
+                        "images/signup background.png",
+                        fit: BoxFit
+                            .cover, // Ensure the image covers the entire container
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
 
                   //signup screen sign-up form
@@ -124,7 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           BoxShadow(
                             blurRadius: 8,
                             color: Colors.black26,
-                            offset: Offset(0, -3),
+                            offset: Offset(3, -10),
                           ),
                         ],
                       ),
@@ -308,7 +337,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                                   //button
                                   Material(
-                                    color: Colors.black,
+                                    color: Colors.blue.shade700,
                                     borderRadius: BorderRadius.circular(30),
                                     child: InkWell(
                                       onTap: () {
@@ -320,14 +349,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       borderRadius: BorderRadius.circular(30),
                                       child: const Padding(
                                         padding: EdgeInsets.symmetric(
-                                          vertical: 10,
-                                          horizontal: 28,
+                                          vertical: 15,
+                                          horizontal: 40,
                                         ),
                                         child: Text(
                                           "SignUp",
                                           style: TextStyle(
+                                            fontFamily: 'Dach',
                                             color: Colors.white,
-                                            fontSize: 16,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                       ),
@@ -353,8 +384,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   child: const Text(
                                     "Login Here",
                                     style: TextStyle(
+                                      fontFamily: 'Dach',
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: 20,
                                     ),
                                   ),
                                 ),

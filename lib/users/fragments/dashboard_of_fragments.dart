@@ -108,9 +108,10 @@ class DashboardOfFragmentsState extends State<DashboardOfFragments> {
                             child: Text(
                               index == currentIndex ? listOfStrings[index] : '',
                               style: const TextStyle(
+                                fontFamily: 'Dach',
                                 color: Colors.red,
                                 fontWeight: FontWeight.w600,
-                                fontSize: 15,
+                                fontSize: 18,
                               ),
                             ),
                           ),
@@ -167,8 +168,8 @@ class DashboardOfFragmentsState extends State<DashboardOfFragments> {
 
   List<String> listOfStrings = [
     'Home',
-    'Chat',
+    'Favorit',
     'Order',
-    'Account',
+    'Profil',
   ];
 }

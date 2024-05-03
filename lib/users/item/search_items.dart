@@ -84,55 +84,59 @@ class _SearchItemsState extends State<SearchItems> {
 
   Widget showSearchBarWidget() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18),
-      child: TextField(
-        style: const TextStyle(color: Colors.white, fontSize: 22),
-        controller: searchController,
-        decoration: InputDecoration(
-          prefixIcon: IconButton(
-            onPressed: () {
-              setState(() {});
-            },
-            icon: const Icon(
-              Icons.search,
-              color: Colors.white,
+        padding: const EdgeInsets.symmetric(horizontal: 18),
+        child: TextField(
+          style: const TextStyle(color: Colors.white, fontSize: 22),
+          controller: searchController,
+          decoration: InputDecoration(
+            prefixIcon: IconButton(
+              onPressed: () {
+                setState(() {});
+              },
+              icon: const Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
             ),
-          ),
-          hintText: "Search best clothes here...",
-          hintStyle: const TextStyle(
-            color: Colors.grey,
-            fontSize: 12,
-          ),
-          suffixIcon: IconButton(
-            onPressed: () {
-              searchController.clear();
+            hintText: "Rapid search...",
+            hintStyle: const TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+            ),
+            suffixIcon: IconButton(
+              onPressed: () {
+                searchController.clear();
 
-              setState(() {});
-            },
-            icon: const Icon(
-              Icons.close,
-              color: Colors.white,
+                setState(() {});
+              },
+              icon: const Icon(
+                Icons.close,
+                color: Colors.red,
+              ),
+            ),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
+                width: 2,
+                color: Colors.black,
+              ),
+            ),
+            focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
+                width: 2,
+                color: Colors.black,
+              ),
+            ),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 10,
+            ),
+            labelStyle: const TextStyle(color: Colors.white70),
+            filled: true,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(40),
             ),
           ),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(
-              width: 2,
-              color: Colors.white,
-            ),
-          ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(
-              width: 2,
-              color: Colors.white,
-            ),
-          ),
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 10,
-          ),
-        ),
-      ),
-    );
+        ));
   }
 
   searchItemDesignWidget(context) {

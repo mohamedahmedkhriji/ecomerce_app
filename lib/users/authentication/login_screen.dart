@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.red[300],
       body: LayoutBuilder(
         builder: (context, cons) {
           return ConstrainedBox(
@@ -74,13 +74,40 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   //login screen header
-                  SizedBox(
+                  Container(
                     width: MediaQuery.of(context).size.width,
                     height: 285,
-                    child: Image.asset(
-                      "images/bgstore.jpg",
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(
+                            30), // Rounded corners for bottom left
+                        bottomRight: Radius.circular(
+                            30), // Rounded corners for bottom right
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.5), // Shadow color
+                          spreadRadius: 5, // Spread radius
+                          blurRadius: 7, // Blur radius
+                          offset: Offset(0, 3), // Shadow offset
+                        ),
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(
+                            30), // Rounded corners for bottom left
+                        bottomRight: Radius.circular(
+                            30), // Rounded corners for bottom right
+                      ),
+                      child: Image.asset(
+                        "images/bgstore.jpg",
+                        fit: BoxFit
+                            .cover, // Ensure the image covers the entire container
+                      ),
                     ),
                   ),
+                  const SizedBox(height: 20),
 
                   //login screen sign-in form
                   Padding(
@@ -94,8 +121,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 8,
-                            color: Colors.black26,
-                            offset: Offset(0, -3),
+                            color: Colors.black45,
+                            offset: Offset(2, -8),
                           ),
                         ],
                       ),
@@ -230,7 +257,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                                   //button
                                   Material(
-                                    color: Colors.black,
+                                    color: Colors.green,
                                     borderRadius: BorderRadius.circular(30),
                                     child: InkWell(
                                       onTap: () {
@@ -241,14 +268,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                       borderRadius: BorderRadius.circular(30),
                                       child: const Padding(
                                         padding: EdgeInsets.symmetric(
-                                          vertical: 10,
-                                          horizontal: 28,
+                                          vertical: 15,
+                                          horizontal: 40,
                                         ),
                                         child: Text(
                                           "Login",
                                           style: TextStyle(
+                                            fontFamily: 'Dach',
                                             color: Colors.white,
-                                            fontSize: 16,
+                                            fontSize: 20,
                                           ),
                                         ),
                                       ),
@@ -259,7 +287,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
 
                             SizedBox(
-                              height: 16,
+                              height: 14,
                             ),
 
                             //dont have an account button - button
@@ -274,20 +302,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: const Text(
                                     "SignUp Here",
                                     style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Dach',
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: 20,
                                     ),
                                   ),
                                 ),
                               ],
-                            ),
-
-                            const Text(
-                              "Or",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 16,
-                              ),
                             ),
 
                             //are you an admin - button
@@ -302,8 +324,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: const Text(
                                     "Click Here",
                                     style: TextStyle(
+                                      fontFamily: 'Dach',
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
                                     ),
                                   ),
                                 ),

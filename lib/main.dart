@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:spacemarket_app/users/authentication/login_screen.dart';
 import 'package:spacemarket_app/users/fragments/dashboard_of_fragments.dart';
 import 'package:spacemarket_app/users/userPreferences/user_preferences.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await Future.delayed(
+    Duration(seconds: 2),
+  );
+  FlutterNativeSplash.remove();
 
   runApp(const MyApp());
 }
@@ -20,7 +28,8 @@ class MyApp extends StatelessWidget {
       title: 'Space Market',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
       home: FutureBuilder(
         // to save user login

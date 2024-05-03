@@ -57,6 +57,9 @@ class AdminGetAllOrdersScreen extends StatelessWidget {
                 // my orders
                 Column(
                   children: [
+                    SizedBox(
+                      height: 30,
+                    ),
                     Column(
                       children: [
                         CircleAvatar(
@@ -70,7 +73,8 @@ class AdminGetAllOrdersScreen extends StatelessWidget {
                       "All New Orders",
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 24,
+                        fontFamily: 'Payement',
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -78,11 +82,12 @@ class AdminGetAllOrdersScreen extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 30.0),
                       child: Text(
-                        "Here are your successfully placed orders.",
+                        "Your successfully placed orders.",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontFamily: 'Payement',
+                          fontSize: 18,
                           color: Colors.black,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),

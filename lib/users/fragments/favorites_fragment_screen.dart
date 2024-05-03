@@ -66,15 +66,24 @@ class FavoritesFragmentScreen extends StatelessWidget {
                   Colors.redAccent,
                 ],
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 10, // Adjust the blur radius as needed
+                  offset: const Offset(0, 5), // Adjust the offset as needed
+                ),
+              ],
             ),
             child: const Padding(
               padding: EdgeInsets.fromLTRB(16, 24, 8, 8),
               child: Text(
-                "My Favorite List:",
+                "My Favorite List",
                 style: TextStyle(
-                  color: Colors.white,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Logofont',
+                  color: Colors.white,
+                  letterSpacing: 3.0,
                 ),
               ),
             ),

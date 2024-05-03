@@ -156,7 +156,12 @@ class _CartListScreenState extends State<CartListScreen> {
         backgroundColor: Colors.red,
         title: const Text(
           "My Cart",
-          style: TextStyle(fontSize: 30, color: Colors.white),
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.white,
+            fontFamily: 'Logofont',
+            letterSpacing: 3.0,
+          ),
         ),
         actions: [
           //to select all items
@@ -195,9 +200,20 @@ class _CartListScreenState extends State<CartListScreen> {
                       var responseFromDialogBox = await Get.dialog(
                         AlertDialog(
                           backgroundColor: Colors.white,
-                          title: const Text("Delete"),
+                          title: const Text(
+                            "Delete",
+                            style: TextStyle(
+                                fontFamily: 'Yes',
+                                fontSize: 25,
+                                color: Colors.red),
+                          ),
                           content: const Text(
-                              "Are you sure to Delete selected items from your Cart List?"),
+                            "Are you sure to Delete selected items from your Cart List?",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                            ),
+                          ),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -206,7 +222,9 @@ class _CartListScreenState extends State<CartListScreen> {
                               child: const Text(
                                 "No",
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  fontFamily: 'Yes',
+                                  fontSize: 20,
+                                  color: Colors.red,
                                 ),
                               ),
                             ),
@@ -217,7 +235,9 @@ class _CartListScreenState extends State<CartListScreen> {
                               child: const Text(
                                 "Yes",
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  fontFamily: 'Yes',
+                                  fontSize: 20,
+                                  color: Colors.green,
                                 ),
                               ),
                             ),

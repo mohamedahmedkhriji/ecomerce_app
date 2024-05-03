@@ -73,7 +73,7 @@ class HomeFragmentScreen extends StatelessWidget {
           showSearchBarWidget(),
 
           const SizedBox(
-            height: 24,
+            height: 20,
           ),
 
           //trending-popular items
@@ -82,16 +82,18 @@ class HomeFragmentScreen extends StatelessWidget {
             child: Text(
               "#Trending",
               style: TextStyle(
-                color: Colors.black,
+                fontFamily: 'Trend',
+                letterSpacing: 2.5,
+                color: Colors.red,
                 fontWeight: FontWeight.bold,
-                fontSize: 24,
+                fontSize: 25,
               ),
             ),
           ),
           trendingMostPopularClothItemWidget(context),
 
           const SizedBox(
-            height: 24,
+            height: 15,
           ),
 
           //all new collections/items
@@ -100,7 +102,9 @@ class HomeFragmentScreen extends StatelessWidget {
             child: Text(
               "New Collections",
               style: TextStyle(
-                color: Colors.black,
+                fontFamily: 'Trend',
+                letterSpacing: 2.5,
+                color: Colors.red,
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
               ),
@@ -116,7 +120,7 @@ class HomeFragmentScreen extends StatelessWidget {
   Widget showSearchBarWidget() {
     //barr de recherche
     return Container(
-      padding: const EdgeInsets.only(top: 70, left: 20, right: 20),
+      padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
       height: 180,
       width: double.infinity,
       decoration: const BoxDecoration(
@@ -133,44 +137,73 @@ class HomeFragmentScreen extends StatelessWidget {
             Colors.red,
           ],
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 10, // Adjust the blur radius as needed
+            offset: const Offset(0, 5), // Adjust the offset as needed
+          ),
+        ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(),
-        child: TextField(
-          style: const TextStyle(color: Colors.white),
-          controller: searchController,
-          decoration: InputDecoration(
-            prefixIcon: IconButton(
-              onPressed: () {
-                Get.to(SearchItems(typedKeyWords: searchController.text));
-              },
-              icon: const Icon(
-                Icons.search,
-                size: 35,
-                color: Colors.white,
-              ),
-            ),
-            hintText: "Search here...",
-            hintStyle: const TextStyle(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 30),
+          Text(
+            "Space Market",
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Logofont',
               color: Colors.white,
-              fontSize: 20,
-            ),
-            suffixIcon: IconButton(
-              onPressed: () {
-                Get.to(CartListScreen());
-              },
-              icon: const Icon(
-                Icons.shopping_cart,
-                size: 35,
-                color: Colors.white,
-              ),
-            ),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 10,
+              letterSpacing: 3.0, // Adjust letter spacing here
             ),
           ),
-        ),
+          SizedBox(height: 18),
+          Padding(
+            padding: const EdgeInsets.symmetric(),
+            child: TextField(
+              style: const TextStyle(fontSize: 20, color: Colors.black),
+              controller: searchController,
+              decoration: InputDecoration(
+                prefixIcon: IconButton(
+                  onPressed: () {
+                    Get.to(SearchItems(typedKeyWords: searchController.text));
+                  },
+                  icon: const Icon(
+                    Icons.search,
+                    size: 35,
+                    color: Colors.black,
+                  ),
+                ),
+                hintText: "Search here...",
+                hintStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                ),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    Get.to(CartListScreen());
+                  },
+                  icon: const Icon(
+                    Icons.shopping_cart,
+                    size: 35,
+                    color: Colors.black,
+                  ),
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
+                labelStyle: const TextStyle(color: Colors.white70),
+                filled: true,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(40),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -193,7 +226,7 @@ class HomeFragmentScreen extends StatelessWidget {
         }
         if (dataSnapShot.data!.length > 0) {
           return SizedBox(
-            height: 260,
+            height: 240,
             child: ListView.builder(
               itemCount: dataSnapShot.data!.length,
               scrollDirection: Axis.horizontal,
@@ -204,7 +237,7 @@ class HomeFragmentScreen extends StatelessWidget {
                     Get.to(ItemDetailsScreen(itemInfo: eachClothItemData));
                   },
                   child: Container(
-                    width: 200,
+                    width: 180,
                     margin: EdgeInsets.fromLTRB(
                       index == 0 ? 16 : 8,
                       10,
@@ -232,7 +265,7 @@ class HomeFragmentScreen extends StatelessWidget {
                           ),
                           child: FadeInImage(
                             height: 150,
-                            width: 200,
+                            width: 180,
                             fit: BoxFit.cover,
                             placeholder:
                                 const AssetImage("images/place_holder.png"),
@@ -333,7 +366,7 @@ class HomeFragmentScreen extends StatelessWidget {
           );
         } else {
           return const Center(
-            child: Text("Empty, No Data."),
+            child: Text("Check your connection."),
           );
         }
       },
@@ -490,7 +523,7 @@ class HomeFragmentScreen extends StatelessWidget {
             );
           } else {
             return const Center(
-              child: Text("Empty, No Data."),
+              child: Text("Check your connection."),
             );
           }
         });
