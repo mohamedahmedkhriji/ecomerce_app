@@ -45,7 +45,7 @@ class OrderFragmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.white,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -60,10 +60,6 @@ class OrderFragmentScreen extends StatelessWidget {
                 // my orders
                 Column(
                   children: [
-                    Image.asset(
-                      "images/order.png",
-                      width: 140,
-                    ),
                     const Text(
                       "My Orders",
                       style: TextStyle(
@@ -85,15 +81,16 @@ class OrderFragmentScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Image.asset(
-                          "images/order.png",
-                          width: 45,
+                        Icon(
+                          Icons.timer_outlined,
+                          size: 30,
+                          color: Colors.green,
                         ),
                         const Text(
                           "History",
                           style: TextStyle(
                             color: Colors.green,
-                            fontSize: 12,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -104,7 +101,7 @@ class OrderFragmentScreen extends StatelessWidget {
               ],
             ),
           ),
-
+          SizedBox(height: 80),
           //some info
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.0),

@@ -69,10 +69,6 @@ class HomeFragmentScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 16,
-          ),
-
           //search bar widget
           showSearchBarWidget(),
 
@@ -84,9 +80,9 @@ class HomeFragmentScreen extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 18),
             child: Text(
-              "Trending",
+              "#Trending",
               style: TextStyle(
-                color: Colors.purpleAccent,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
               ),
@@ -104,7 +100,7 @@ class HomeFragmentScreen extends StatelessWidget {
             child: Text(
               "New Collections",
               style: TextStyle(
-                color: Colors.purpleAccent,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
               ),
@@ -118,50 +114,61 @@ class HomeFragmentScreen extends StatelessWidget {
   }
 
   Widget showSearchBarWidget() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18),
-      child: TextField(
-        style: const TextStyle(color: Colors.white),
-        controller: searchController,
-        decoration: InputDecoration(
-          prefixIcon: IconButton(
-            onPressed: () {
-              Get.to(SearchItems(typedKeyWords: searchController.text));
-            },
-            icon: const Icon(
-              Icons.search,
-              color: Colors.purpleAccent,
+    //barr de recherche
+    return Container(
+      padding: const EdgeInsets.only(top: 70, left: 20, right: 20),
+      height: 180,
+      width: double.infinity,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
+        ),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          stops: [0.1, 0.5],
+          colors: [
+            Colors.redAccent,
+            Colors.red,
+          ],
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(),
+        child: TextField(
+          style: const TextStyle(color: Colors.white),
+          controller: searchController,
+          decoration: InputDecoration(
+            prefixIcon: IconButton(
+              onPressed: () {
+                Get.to(SearchItems(typedKeyWords: searchController.text));
+              },
+              icon: const Icon(
+                Icons.search,
+                size: 35,
+                color: Colors.white,
+              ),
             ),
-          ),
-          hintText: "Search best clothes here...",
-          hintStyle: const TextStyle(
-            color: Colors.grey,
-            fontSize: 15,
-          ),
-          suffixIcon: IconButton(
-            onPressed: () {
-              Get.to(CartListScreen());
-            },
-            icon: const Icon(
-              Icons.shopping_cart,
-              color: Colors.purpleAccent,
+            hintText: "Search here...",
+            hintStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
             ),
-          ),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(
-              width: 2,
-              color: Colors.purple,
+            suffixIcon: IconButton(
+              onPressed: () {
+                Get.to(CartListScreen());
+              },
+              icon: const Icon(
+                Icons.shopping_cart,
+                size: 35,
+                color: Colors.white,
+              ),
             ),
-          ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(
-              width: 2,
-              color: Colors.purpleAccent,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
             ),
-          ),
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 10,
           ),
         ),
       ),
@@ -206,11 +213,11 @@ class HomeFragmentScreen extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.pink[300],
+                      color: Colors.red[400],
                       boxShadow: const [
                         BoxShadow(
                           offset: Offset(0, 3),
-                          blurRadius: 6,
+                          blurRadius: 7,
                           color: Colors.black,
                         ),
                       ],
@@ -371,11 +378,11 @@ class HomeFragmentScreen extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.pink[300],
+                      color: Colors.red[400],
                       boxShadow: const [
                         BoxShadow(
                           offset: Offset(0, 0),
-                          blurRadius: 6,
+                          blurRadius: 7,
                           color: Colors.black,
                         ),
                       ],
@@ -433,7 +440,7 @@ class HomeFragmentScreen extends StatelessWidget {
 
                                 //tags
                                 Text(
-                                  "Tags: \n" +
+                                  "Tags: \n#" +
                                       eachClothItemRecord.tags
                                           .toString()
                                           .replaceAll("[", "")

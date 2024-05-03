@@ -147,7 +147,7 @@ class OrderConfirmationScreen extends StatelessWidget {
             //image
             Image.asset(
               "images/order.png",
-              width: 160,
+              width: 220,
             ),
 
             const SizedBox(

@@ -48,14 +48,34 @@ class FavoritesFragmentScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 24, 8, 8),
-            child: Text(
-              "My Favorite List:",
-              style: TextStyle(
-                color: Colors.red,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
+          Container(
+            padding: const EdgeInsets.only(top: 70, left: 20, right: 20),
+            height: 180,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                stops: [0.1, 0.5],
+                colors: [
+                  Colors.red,
+                  Colors.redAccent,
+                ],
+              ),
+            ),
+            child: const Padding(
+              padding: EdgeInsets.fromLTRB(16, 24, 8, 8),
+              child: Text(
+                "My Favorite List:",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
@@ -65,14 +85,14 @@ class FavoritesFragmentScreen extends StatelessWidget {
             child: Text(
               "Order these best clothes for yourself now.",
               style: TextStyle(
-                color: Colors.black54,
-                fontSize: 16,
+                color: Colors.black,
+                fontSize: 18,
                 fontWeight: FontWeight.w300,
               ),
             ),
           ),
 
-          const SizedBox(height: 24),
+          const SizedBox(height: 5),
 
           //displaying favoriteList
           favoriteListItemDesignWidget(context),
@@ -134,12 +154,12 @@ class FavoritesFragmentScreen extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.black,
+                      color: Colors.redAccent,
                       boxShadow: const [
                         BoxShadow(
                           offset: Offset(0, 0),
                           blurRadius: 6,
-                          color: Colors.white,
+                          color: Colors.black,
                         ),
                       ],
                     ),
@@ -163,8 +183,8 @@ class FavoritesFragmentScreen extends StatelessWidget {
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                         style: const TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.grey,
+                                          fontSize: 20,
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -181,8 +201,8 @@ class FavoritesFragmentScreen extends StatelessWidget {
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                         style: const TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.purpleAccent,
+                                          fontSize: 20,
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -204,8 +224,8 @@ class FavoritesFragmentScreen extends StatelessWidget {
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.grey,
+                                    fontSize: 14,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],

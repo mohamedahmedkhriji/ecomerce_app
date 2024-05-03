@@ -77,6 +77,7 @@ class ProfileFragmentScreen extends StatelessWidget {
           Text(
             userData,
             style: const TextStyle(
+              color: Colors.black,
               fontSize: 15,
             ),
           ),

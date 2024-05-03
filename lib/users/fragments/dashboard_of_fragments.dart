@@ -1,83 +1,174 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
+import 'package:flutter/services.dart';
 import 'package:spacemarket_app/users/fragments/favorites_fragment_screen.dart';
 import 'package:spacemarket_app/users/fragments/home_fragment_screen.dart';
 import 'package:spacemarket_app/users/fragments/order_fragment_screen.dart';
 import 'package:spacemarket_app/users/fragments/profile_fragment_screen.dart';
-import 'package:spacemarket_app/users/userPreferences/current_user.dart';
 
-class DashboardOfFragments extends StatelessWidget {
-  CurrentUser _rememberCurrentUser = Get.put(CurrentUser());
+class DashboardOfFragments extends StatefulWidget {
+  @override
+  DashboardOfFragmentsState createState() => DashboardOfFragmentsState();
+}
 
-  final List<Widget> _fragmentScreens = [
-    HomeFragmentScreen(),
-    FavoritesFragmentScreen(),
-    OrderFragmentScreen(),
-    ProfileFragmentScreen(),
-  ];
+class DashboardOfFragmentsState extends State<DashboardOfFragments> {
+  var currentIndex = 0;
+  late PageController _pageController;
 
-  final List _navigationButtonsProperties = [
-    {
-      "active_icon": Icons.home,
-      "non_active_icon": Icons.home_outlined,
-      "label": "Home",
-    },
-    {
-      "active_icon": Icons.favorite,
-      "non_active_icon": Icons.favorite_border,
-      "label": "Favorites",
-    },
-    {
-      "active_icon": FontAwesomeIcons.boxOpen,
-      "non_active_icon": FontAwesomeIcons.box,
-      "label": "Orders",
-    },
-    {
-      "active_icon": Icons.person,
-      "non_active_icon": Icons.person_outline,
-      "label": "Profile",
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: currentIndex);
+  }
 
-  final RxInt _indexNumber = 0.obs;
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder(
-      init: CurrentUser(),
-      initState: (currentState) {
-        _rememberCurrentUser.getUserInfo();
-      },
-      builder: (controller) {
-        return Scaffold(
-          backgroundColor: Colors.pink[50],
-          body: SafeArea(
-            child: Obx(() => _fragmentScreens[_indexNumber.value]),
-          ),
-          bottomNavigationBar: Obx(
-            () => BottomNavigationBar(
-              currentIndex: _indexNumber.value,
-              onTap: (value) {
-                _indexNumber.value = value;
-              },
-              showSelectedLabels: true,
-              showUnselectedLabels: true,
-              selectedItemColor: Colors.black,
-              unselectedItemColor: Colors.white,
-              items: List.generate(4, (index) {
-                var navBtnProperty = _navigationButtonsProperties[index];
-                return BottomNavigationBarItem(
-                  backgroundColor: Colors.purple[200],
-                  icon: Icon(navBtnProperty["non_active_icon"]),
-                  activeIcon: Icon(navBtnProperty["active_icon"]),
-                  label: navBtnProperty["label"],
+    double displayWidth = MediaQuery.of(context).size.width;
+    return Scaffold(
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.all(displayWidth * .05),
+        height: displayWidth * .155,
+        decoration: BoxDecoration(
+          color: Colors.red,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(.1),
+              blurRadius: 30,
+              offset: Offset(0, 10),
+            ),
+          ],
+          borderRadius: BorderRadius.circular(50),
+        ),
+        child: ListView.builder(
+          itemCount: 4,
+          scrollDirection: Axis.horizontal,
+          padding: EdgeInsets.symmetric(horizontal: displayWidth * .02),
+          itemBuilder: (context, index) => InkWell(
+            onTap: () {
+              setState(() {
+                currentIndex = index;
+                _pageController.animateToPage(
+                  currentIndex,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.ease,
                 );
-              }),
+                HapticFeedback.lightImpact();
+              });
+            },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            child: Stack(
+              children: [
+                AnimatedContainer(
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.fastLinearToSlowEaseIn,
+                  width: index == currentIndex
+                      ? displayWidth * .32
+                      : displayWidth * .18,
+                  alignment: Alignment.center,
+                  child: AnimatedContainer(
+                    duration: const Duration(seconds: 1),
+                    curve: Curves.fastLinearToSlowEaseIn,
+                    height: index == currentIndex ? displayWidth * .12 : 0,
+                    width: index == currentIndex ? displayWidth * .32 : 0,
+                    decoration: BoxDecoration(
+                      color: index == currentIndex
+                          ? Colors.white
+                          : Colors.transparent,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  ),
+                ),
+                AnimatedContainer(
+                  duration: Duration(seconds: 1),
+                  curve: Curves.fastLinearToSlowEaseIn,
+                  width: index == currentIndex
+                      ? displayWidth * .31
+                      : displayWidth * .18,
+                  alignment: Alignment.center,
+                  child: Stack(
+                    children: [
+                      Row(
+                        children: [
+                          AnimatedContainer(
+                            duration: Duration(seconds: 1),
+                            curve: Curves.fastLinearToSlowEaseIn,
+                            width:
+                                index == currentIndex ? displayWidth * .13 : 0,
+                          ),
+                          AnimatedOpacity(
+                            opacity: index == currentIndex ? 1 : 0,
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.fastLinearToSlowEaseIn,
+                            child: Text(
+                              index == currentIndex ? listOfStrings[index] : '',
+                              style: const TextStyle(
+                                color: Colors.red,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          AnimatedContainer(
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.fastLinearToSlowEaseIn,
+                            width:
+                                index == currentIndex ? displayWidth * .03 : 20,
+                          ),
+                          Icon(
+                            listOfIcons[index],
+                            size: displayWidth * .076,
+                            color: index == currentIndex
+                                ? Colors.red
+                                : Colors.white,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
-        );
-      },
+        ),
+      ),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+        children: <Widget>[
+          HomeFragmentScreen(),
+          FavoritesFragmentScreen(),
+          OrderFragmentScreen(),
+          ProfileFragmentScreen(),
+        ],
+      ),
     );
   }
+
+  List<IconData> listOfIcons = [
+    Icons.home_rounded,
+    Icons.favorite,
+    Icons.monetization_on_rounded,
+    Icons.person_rounded,
+  ];
+
+  List<String> listOfStrings = [
+    'Home',
+    'Chat',
+    'Order',
+    'Account',
+  ];
 }

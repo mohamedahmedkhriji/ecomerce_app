@@ -30,10 +30,13 @@ class OrderNowScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.pink[50],
-        title: const Text("Order Now"),
+        backgroundColor: Colors.red,
+        title: const Text(
+          "Order Now",
+          style: TextStyle(color: Colors.white, fontSize: 30),
+        ),
         titleSpacing: 0,
       ),
       body: ListView(
@@ -140,7 +143,7 @@ class OrderNowScreen extends StatelessWidget {
               'Phone Number:',
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.green,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
             ),

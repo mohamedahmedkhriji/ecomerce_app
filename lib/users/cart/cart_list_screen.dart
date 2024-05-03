@@ -151,10 +151,13 @@ class _CartListScreenState extends State<CartListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.pink[200],
-        title: const Text("My Cart"),
+        backgroundColor: Colors.red,
+        title: const Text(
+          "My Cart",
+          style: TextStyle(fontSize: 30, color: Colors.white),
+        ),
         actions: [
           //to select all items
           Obx(
@@ -176,8 +179,8 @@ class _CartListScreenState extends State<CartListScreen> {
                     ? Icons.check_box
                     : Icons.check_box_outline_blank,
                 color: cartListController.isSelectedAll
-                    ? Colors.green
-                    : Colors.green,
+                    ? Colors.white
+                    : Colors.white,
               ),
             ),
           ),
@@ -191,7 +194,7 @@ class _CartListScreenState extends State<CartListScreen> {
                     onPressed: () async {
                       var responseFromDialogBox = await Get.dialog(
                         AlertDialog(
-                          backgroundColor: Colors.grey,
+                          backgroundColor: Colors.white,
                           title: const Text("Delete"),
                           content: const Text(
                               "Are you sure to Delete selected items from your Cart List?"),
@@ -235,7 +238,7 @@ class _CartListScreenState extends State<CartListScreen> {
                     icon: const Icon(
                       Icons.delete_sweep,
                       size: 26,
-                      color: Colors.redAccent,
+                      color: Colors.white,
                     ),
                   );
                 } else {
@@ -291,8 +294,8 @@ class _CartListScreenState extends State<CartListScreen> {
                                     ? Icons.check_box
                                     : Icons.check_box_outline_blank,
                                 color: cartListController.isSelectedAll
-                                    ? Colors.green
-                                    : Colors.grey,
+                                    ? Colors.black
+                                    : Colors.black,
                               ),
                             );
                           },
@@ -318,7 +321,7 @@ class _CartListScreenState extends State<CartListScreen> {
                               ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: Colors.purple[100],
+                                color: Colors.red,
                                 boxShadow: const [
                                   BoxShadow(
                                     offset: Offset(0, 0),
@@ -345,8 +348,8 @@ class _CartListScreenState extends State<CartListScreen> {
                                             maxLines: 2,
                                             overflow: TextOverflow.ellipsis,
                                             style: const TextStyle(
-                                              fontSize: 18,
-                                              color: Colors.black,
+                                              fontSize: 20,
+                                              color: Colors.white,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
@@ -381,7 +384,7 @@ class _CartListScreenState extends State<CartListScreen> {
                                                           .toString(),
                                                   style: const TextStyle(
                                                     fontSize: 20,
-                                                    color: Colors.green,
+                                                    color: Colors.white,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
@@ -409,7 +412,7 @@ class _CartListScreenState extends State<CartListScreen> {
                                                 },
                                                 icon: const Icon(
                                                   Icons.remove_circle_outline,
-                                                  color: Colors.red,
+                                                  color: Colors.white,
                                                   size: 30,
                                                 ),
                                               ),
@@ -421,7 +424,7 @@ class _CartListScreenState extends State<CartListScreen> {
                                               Text(
                                                 cartModel.quantity.toString(),
                                                 style: const TextStyle(
-                                                  color: Colors.black,
+                                                  color: Colors.white,
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.bold,
                                                 ),
@@ -441,7 +444,7 @@ class _CartListScreenState extends State<CartListScreen> {
                                                 },
                                                 icon: const Icon(
                                                   Icons.add_circle_outline,
-                                                  color: Colors.green,
+                                                  color: Colors.white,
                                                   size: 30,
                                                 ),
                                               ),

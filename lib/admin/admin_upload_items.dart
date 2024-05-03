@@ -51,11 +51,11 @@ class _AdminUploadItemsScreenState extends State<AdminUploadItemsScreen> {
         context: context,
         builder: (context) {
           return SimpleDialog(
-            backgroundColor: Colors.black,
+            backgroundColor: Colors.white,
             title: const Text(
               "Item Image",
               style: TextStyle(
-                color: Colors.deepPurple,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -120,8 +120,8 @@ class _AdminUploadItemsScreenState extends State<AdminUploadItemsScreen> {
           child: const Text(
             "New Orders",
             style: TextStyle(
-              color: Colors.green,
-              fontSize: 16,
+              color: Colors.white,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -134,6 +134,7 @@ class _AdminUploadItemsScreenState extends State<AdminUploadItemsScreen> {
             },
             icon: const Icon(
               Icons.logout,
+              size: 40,
               color: Colors.redAccent,
             ),
           ),
@@ -196,7 +197,7 @@ class _AdminUploadItemsScreenState extends State<AdminUploadItemsScreen> {
 
     String imageName = DateTime.now().millisecondsSinceEpoch.toString();
     requestImgurApi.fields['title'] = imageName;
-    requestImgurApi.headers['Authorization'] = "Client-ID " + "";
+    requestImgurApi.headers['Authorization'] = "Client-ID " + "8a346de4683a331";
 
     var imageFile = await http.MultipartFile.fromPath(
       'image',
@@ -276,14 +277,17 @@ class _AdminUploadItemsScreenState extends State<AdminUploadItemsScreen> {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.black54,
-                Colors.deepPurple,
+                Colors.green,
+                Colors.green,
               ],
             ),
           ),
         ),
         automaticallyImplyLeading: false,
-        title: const Text("Upload Form"),
+        title: const Text(
+          "Upload Form",
+          style: TextStyle(fontSize: 25, color: Colors.white),
+        ),
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
@@ -314,7 +318,8 @@ class _AdminUploadItemsScreenState extends State<AdminUploadItemsScreen> {
             child: const Text(
               "Done",
               style: TextStyle(
-                color: Colors.green,
+                fontSize: 20,
+                color: Colors.white,
               ),
             ),
           ),
@@ -348,7 +353,7 @@ class _AdminUploadItemsScreenState extends State<AdminUploadItemsScreen> {
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 8,
-                    color: Colors.black26,
+                    color: Colors.black,
                     offset: Offset(0, -3),
                   ),
                 ],

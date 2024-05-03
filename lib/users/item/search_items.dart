@@ -63,9 +63,9 @@ class _SearchItemsState extends State<SearchItems> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white24,
+        backgroundColor: Colors.red,
         title: showSearchBarWidget(),
         titleSpacing: 0,
         leading: IconButton(
@@ -74,7 +74,7 @@ class _SearchItemsState extends State<SearchItems> {
           },
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.green,
+            color: Colors.white,
           ),
         ),
       ),
@@ -86,7 +86,7 @@ class _SearchItemsState extends State<SearchItems> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18),
       child: TextField(
-        style: const TextStyle(color: Colors.black),
+        style: const TextStyle(color: Colors.white, fontSize: 22),
         controller: searchController,
         decoration: InputDecoration(
           prefixIcon: IconButton(
@@ -95,7 +95,7 @@ class _SearchItemsState extends State<SearchItems> {
             },
             icon: const Icon(
               Icons.search,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
           hintText: "Search best clothes here...",
@@ -111,19 +111,19 @@ class _SearchItemsState extends State<SearchItems> {
             },
             icon: const Icon(
               Icons.close,
-              color: Colors.red,
+              color: Colors.white,
             ),
           ),
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 2,
-              color: Colors.purple,
+              color: Colors.white,
             ),
           ),
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 2,
-              color: Colors.purpleAccent,
+              color: Colors.white,
             ),
           ),
           contentPadding: const EdgeInsets.symmetric(
@@ -173,12 +173,12 @@ class _SearchItemsState extends State<SearchItems> {
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.black,
+                      color: Colors.redAccent,
                       boxShadow: const [
                         BoxShadow(
                           offset: Offset(0, 0),
-                          blurRadius: 6,
-                          color: Colors.white,
+                          blurRadius: 7,
+                          color: Colors.black,
                         ),
                       ],
                     ),
@@ -202,8 +202,8 @@ class _SearchItemsState extends State<SearchItems> {
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                         style: const TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.grey,
+                                          fontSize: 20,
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -221,7 +221,7 @@ class _SearchItemsState extends State<SearchItems> {
                                         overflow: TextOverflow.ellipsis,
                                         style: const TextStyle(
                                           fontSize: 18,
-                                          color: Colors.black,
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -243,8 +243,8 @@ class _SearchItemsState extends State<SearchItems> {
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.grey,
+                                    fontSize: 15,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
